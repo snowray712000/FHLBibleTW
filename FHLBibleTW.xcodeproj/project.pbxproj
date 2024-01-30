@@ -8,6 +8,25 @@
 
 /* Begin PBXBuildFile section */
 		57BA20432B664A9900E5638D /* open_han31.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 57BA20422B664A9900E5638D /* open_han31.ttf */; };
+		57BA20462B6898DE00E5638D /* DText.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57BA20452B6898DE00E5638D /* DText.swift */; };
+		57BA20482B68991E00E5638D /* DFoot.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57BA20472B68991E00E5638D /* DFoot.swift */; };
+		57BA204B2B68B4E100E5638D /* DText_Init.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57BA204A2B68B4E100E5638D /* DText_Init.swift */; };
+		57BA204D2B68B50300E5638D /* DText_Clone.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57BA204C2B68B50300E5638D /* DText_Clone.swift */; };
+		57BA204F2B68B54F00E5638D /* DText_IsTheSame.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57BA204E2B68B54F00E5638D /* DText_IsTheSame.swift */; };
+		57BA20512B68B5A800E5638D /* DText_others.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57BA20502B68B5A800E5638D /* DText_others.swift */; };
+		57BA20542B68B70C00E5638D /* DAddress.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57BA20532B68B70C00E5638D /* DAddress.swift */; };
+		57BA20562B68B76500E5638D /* BookNameLang.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57BA20552B68B76500E5638D /* BookNameLang.swift */; };
+		57BA20592B68B7FF00E5638D /* BookNameConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57BA20582B68B7FF00E5638D /* BookNameConstants.swift */; };
+		57BA20612B68C82600E5638D /* SINQ.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57BA205F2B68C82600E5638D /* SINQ.swift */; };
+		57BA20642B68CE0C00E5638D /* BibleChapCount.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57BA20632B68CE0C00E5638D /* BibleChapCount.swift */; };
+		57BA20662B68CE2100E5638D /* BibleVerseCount.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57BA20652B68CE2100E5638D /* BibleVerseCount.swift */; };
+		57BA20682B68CE4A00E5638D /* VerseRange.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57BA20672B68CE4A00E5638D /* VerseRange.swift */; };
+		57BA206A2B68D07F00E5638D /* DAddress_Init.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57BA20692B68D07F00E5638D /* DAddress_Init.swift */; };
+		57BA206C2B69079B00E5638D /* to_attributedString.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57BA206B2B69079B00E5638D /* to_attributedString.swift */; };
+		57BA206F2B69171400E5638D /* DTextDrawToAttributeString.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57BA206E2B69171400E5638D /* DTextDrawToAttributeString.swift */; };
+		57BA20712B69173700E5638D /* EasyUIFont.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57BA20702B69173700E5638D /* EasyUIFont.swift */; };
+		57BA20732B69175A00E5638D /* EasyStringAttributes.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57BA20722B69175A00E5638D /* EasyStringAttributes.swift */; };
+		57BA20752B6917A800E5638D /* colors_for_dtext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57BA20742B6917A800E5638D /* colors_for_dtext.swift */; };
 		57D1360D2B4A642000FBDA4D /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57D1360C2B4A642000FBDA4D /* AppDelegate.swift */; };
 		57D1360F2B4A642000FBDA4D /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57D1360E2B4A642000FBDA4D /* SceneDelegate.swift */; };
 		57D136112B4A642000FBDA4D /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57D136102B4A642000FBDA4D /* ViewController.swift */; };
@@ -40,6 +59,25 @@
 
 /* Begin PBXFileReference section */
 		57BA20422B664A9900E5638D /* open_han31.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = open_han31.ttf; sourceTree = "<group>"; };
+		57BA20452B6898DE00E5638D /* DText.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DText.swift; sourceTree = "<group>"; };
+		57BA20472B68991E00E5638D /* DFoot.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DFoot.swift; sourceTree = "<group>"; };
+		57BA204A2B68B4E100E5638D /* DText_Init.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DText_Init.swift; sourceTree = "<group>"; };
+		57BA204C2B68B50300E5638D /* DText_Clone.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DText_Clone.swift; sourceTree = "<group>"; };
+		57BA204E2B68B54F00E5638D /* DText_IsTheSame.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DText_IsTheSame.swift; sourceTree = "<group>"; };
+		57BA20502B68B5A800E5638D /* DText_others.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DText_others.swift; sourceTree = "<group>"; };
+		57BA20532B68B70C00E5638D /* DAddress.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DAddress.swift; sourceTree = "<group>"; };
+		57BA20552B68B76500E5638D /* BookNameLang.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookNameLang.swift; sourceTree = "<group>"; };
+		57BA20582B68B7FF00E5638D /* BookNameConstants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookNameConstants.swift; sourceTree = "<group>"; };
+		57BA205F2B68C82600E5638D /* SINQ.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SINQ.swift; sourceTree = "<group>"; };
+		57BA20632B68CE0C00E5638D /* BibleChapCount.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BibleChapCount.swift; sourceTree = "<group>"; };
+		57BA20652B68CE2100E5638D /* BibleVerseCount.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BibleVerseCount.swift; sourceTree = "<group>"; };
+		57BA20672B68CE4A00E5638D /* VerseRange.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VerseRange.swift; sourceTree = "<group>"; };
+		57BA20692B68D07F00E5638D /* DAddress_Init.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DAddress_Init.swift; sourceTree = "<group>"; };
+		57BA206B2B69079B00E5638D /* to_attributedString.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = to_attributedString.swift; sourceTree = "<group>"; };
+		57BA206E2B69171400E5638D /* DTextDrawToAttributeString.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DTextDrawToAttributeString.swift; sourceTree = "<group>"; };
+		57BA20702B69173700E5638D /* EasyUIFont.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EasyUIFont.swift; sourceTree = "<group>"; };
+		57BA20722B69175A00E5638D /* EasyStringAttributes.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EasyStringAttributes.swift; sourceTree = "<group>"; };
+		57BA20742B6917A800E5638D /* colors_for_dtext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = colors_for_dtext.swift; sourceTree = "<group>"; };
 		57D136092B4A642000FBDA4D /* FHLBibleTW.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FHLBibleTW.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		57D1360C2B4A642000FBDA4D /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		57D1360E2B4A642000FBDA4D /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -82,6 +120,61 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		57BA20492B6899CB00E5638D /* DText */ = {
+			isa = PBXGroup;
+			children = (
+				57BA20452B6898DE00E5638D /* DText.swift */,
+				57BA20472B68991E00E5638D /* DFoot.swift */,
+				57BA204A2B68B4E100E5638D /* DText_Init.swift */,
+				57BA204C2B68B50300E5638D /* DText_Clone.swift */,
+				57BA204E2B68B54F00E5638D /* DText_IsTheSame.swift */,
+				57BA20502B68B5A800E5638D /* DText_others.swift */,
+				57BA206D2B6916F400E5638D /* toAttributedString */,
+			);
+			path = DText;
+			sourceTree = "<group>";
+		};
+		57BA20522B68B6FF00E5638D /* DAddress */ = {
+			isa = PBXGroup;
+			children = (
+				57BA20532B68B70C00E5638D /* DAddress.swift */,
+				57BA20692B68D07F00E5638D /* DAddress_Init.swift */,
+				57BA20672B68CE4A00E5638D /* VerseRange.swift */,
+				57BA20552B68B76500E5638D /* BookNameLang.swift */,
+				57BA20632B68CE0C00E5638D /* BibleChapCount.swift */,
+				57BA20652B68CE2100E5638D /* BibleVerseCount.swift */,
+			);
+			path = DAddress;
+			sourceTree = "<group>";
+		};
+		57BA20572B68B7F600E5638D /* BookNameConstants */ = {
+			isa = PBXGroup;
+			children = (
+				57BA20582B68B7FF00E5638D /* BookNameConstants.swift */,
+			);
+			path = BookNameConstants;
+			sourceTree = "<group>";
+		};
+		57BA205D2B68C82600E5638D /* SINQ */ = {
+			isa = PBXGroup;
+			children = (
+				57BA205F2B68C82600E5638D /* SINQ.swift */,
+			);
+			path = SINQ;
+			sourceTree = "<group>";
+		};
+		57BA206D2B6916F400E5638D /* toAttributedString */ = {
+			isa = PBXGroup;
+			children = (
+				57BA206B2B69079B00E5638D /* to_attributedString.swift */,
+				57BA206E2B69171400E5638D /* DTextDrawToAttributeString.swift */,
+				57BA20702B69173700E5638D /* EasyUIFont.swift */,
+				57BA20722B69175A00E5638D /* EasyStringAttributes.swift */,
+				57BA20742B6917A800E5638D /* colors_for_dtext.swift */,
+			);
+			path = toAttributedString;
+			sourceTree = "<group>";
+		};
 		57D136002B4A642000FBDA4D = {
 			isa = PBXGroup;
 			children = (
@@ -105,6 +198,10 @@
 		57D1360B2B4A642000FBDA4D /* FHLBibleTW */ = {
 			isa = PBXGroup;
 			children = (
+				57BA205D2B68C82600E5638D /* SINQ */,
+				57BA20572B68B7F600E5638D /* BookNameConstants */,
+				57BA20522B68B6FF00E5638D /* DAddress */,
+				57BA20492B6899CB00E5638D /* DText */,
 				57D1363F2B4A76AE00FBDA4D /* Read */,
 				57D1360C2B4A642000FBDA4D /* AppDelegate.swift */,
 				57D1360E2B4A642000FBDA4D /* SceneDelegate.swift */,
@@ -276,11 +373,30 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				57BA20612B68C82600E5638D /* SINQ.swift in Sources */,
+				57BA206F2B69171400E5638D /* DTextDrawToAttributeString.swift in Sources */,
 				57D136112B4A642000FBDA4D /* ViewController.swift in Sources */,
+				57BA20642B68CE0C00E5638D /* BibleChapCount.swift in Sources */,
+				57BA20712B69173700E5638D /* EasyUIFont.swift in Sources */,
 				57D136412B4A76C200FBDA4D /* VCRead.swift in Sources */,
+				57BA204D2B68B50300E5638D /* DText_Clone.swift in Sources */,
+				57BA20592B68B7FF00E5638D /* BookNameConstants.swift in Sources */,
+				57BA20732B69175A00E5638D /* EasyStringAttributes.swift in Sources */,
+				57BA204F2B68B54F00E5638D /* DText_IsTheSame.swift in Sources */,
 				57D1360D2B4A642000FBDA4D /* AppDelegate.swift in Sources */,
+				57BA20662B68CE2100E5638D /* BibleVerseCount.swift in Sources */,
+				57BA20562B68B76500E5638D /* BookNameLang.swift in Sources */,
 				57D136172B4A642000FBDA4D /* FHLBibleTW.xcdatamodeld in Sources */,
+				57BA206C2B69079B00E5638D /* to_attributedString.swift in Sources */,
+				57BA206A2B68D07F00E5638D /* DAddress_Init.swift in Sources */,
+				57BA20482B68991E00E5638D /* DFoot.swift in Sources */,
+				57BA20752B6917A800E5638D /* colors_for_dtext.swift in Sources */,
+				57BA20542B68B70C00E5638D /* DAddress.swift in Sources */,
 				57D1360F2B4A642000FBDA4D /* SceneDelegate.swift in Sources */,
+				57BA20462B6898DE00E5638D /* DText.swift in Sources */,
+				57BA20682B68CE4A00E5638D /* VerseRange.swift in Sources */,
+				57BA20512B68B5A800E5638D /* DText_others.swift in Sources */,
+				57BA204B2B68B4E100E5638D /* DText_Init.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

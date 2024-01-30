@@ -26,10 +26,12 @@ class VCRead: UITableViewController {
     // datasource cell
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "VCReadCell", for: indexPath) as! VCReadCell
-        cell.labelText?.text =  "仝此個所在有閣講：「𪜶絕對𣍐當進入我所賜的安歇。」"        
+        let dtexts: [DText] = [DText("仝此個所在有閣講：「𪜶絕對𣍐當進入我所賜的安歇。」",isTitle1: true),DText("這是一般文字")]
+        cell.labelText?.attributedText = to_attributedString(dtexts)
         cell.labelVerse?.text = "1"
         return cell
     }
+    
     
     @IBAction func doPickBook(){
         print("doPickBook")
