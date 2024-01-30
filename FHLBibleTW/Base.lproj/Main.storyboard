@@ -1,24 +1,132 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13122.16" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="21701" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="WL0-aL-pda">
+    <device id="retina4_7" orientation="portrait" appearance="light"/>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13104.12"/>
-        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="21678"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--View Controller-->
-        <scene sceneID="tne-QT-ifu">
+        <!--Read-->
+        <scene sceneID="Uhg-J2-etw">
             <objects>
-                <viewController id="BYZ-38-t0r" customClass="ViewController" customModuleProvider="target" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
+                <tableViewController restorationIdentifier="VCRead" storyboardIdentifier="VCRead" id="NIR-EB-XyM" customClass="VCRead" customModule="FHLBibleTW" customModuleProvider="target" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" id="M1l-zO-nAv">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" xcode11CocoaTouchSystemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
-                        <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
-                    </view>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <prototypes>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" restorationIdentifier="VCReadCell" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="VCReadCell" id="2yN-Iz-ONZ" customClass="VCReadCell" customModule="FHLBibleTW" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="50" width="375" height="37.5"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="2yN-Iz-ONZ" id="hwH-7C-FDv">
+                                    <rect key="frame" x="0.0" y="0.0" width="375" height="37.5"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" usesAttributedText="YES" lineBreakMode="clip" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Bap-hg-JGH">
+                                            <rect key="frame" x="25" y="15" width="345" height="17.5"/>
+                                            <attributedString key="attributedText">
+                                                <fragment content="text">
+                                                    <attributes>
+                                                        <font key="NSFont" size="17" name="OpenHanBibleTC"/>
+                                                        <paragraphStyle key="NSParagraphStyle" alignment="left" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
+                                                    </attributes>
+                                                </fragment>
+                                            </attributedString>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="verse" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="yRt-Py-cyk">
+                                            <rect key="frame" x="0.0" y="0.0" width="35.5" height="17"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                            <color key="textColor" systemColor="secondaryLabelColor"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                    </subviews>
+                                    <constraints>
+                                        <constraint firstAttribute="bottom" secondItem="Bap-hg-JGH" secondAttribute="bottom" constant="5" id="8yu-c2-0ot"/>
+                                        <constraint firstItem="yRt-Py-cyk" firstAttribute="leading" secondItem="hwH-7C-FDv" secondAttribute="leading" id="Ivb-20-agh"/>
+                                        <constraint firstAttribute="trailing" secondItem="Bap-hg-JGH" secondAttribute="trailing" constant="5" id="OU5-nS-fHp"/>
+                                        <constraint firstItem="Bap-hg-JGH" firstAttribute="top" secondItem="hwH-7C-FDv" secondAttribute="top" constant="15" id="TWo-sl-41t"/>
+                                        <constraint firstItem="Bap-hg-JGH" firstAttribute="leading" secondItem="hwH-7C-FDv" secondAttribute="leading" constant="25" id="gPI-sO-USp"/>
+                                        <constraint firstItem="yRt-Py-cyk" firstAttribute="top" secondItem="hwH-7C-FDv" secondAttribute="top" id="i6e-LX-2Yi"/>
+                                    </constraints>
+                                </tableViewCellContentView>
+                                <connections>
+                                    <outlet property="labelText" destination="Bap-hg-JGH" id="pYk-hQ-nga"/>
+                                    <outlet property="labelVerse" destination="yRt-Py-cyk" id="ZeT-AI-1u8"/>
+                                </connections>
+                            </tableViewCell>
+                        </prototypes>
+                        <connections>
+                            <outlet property="dataSource" destination="NIR-EB-XyM" id="xyy-hu-tqv"/>
+                            <outlet property="delegate" destination="NIR-EB-XyM" id="FeB-5E-oX2"/>
+                        </connections>
+                    </tableView>
+                    <navigationItem key="navigationItem" id="FsQ-KZ-s5x">
+                        <nil key="title"/>
+                        <view key="titleView" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Z6l-nk-HX1">
+                            <rect key="frame" x="111.5" y="0.0" width="142" height="44"/>
+                            <subviews>
+                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="w3r-8i-8lN">
+                                    <rect key="frame" x="5" y="5" width="132" height="34"/>
+                                    <state key="normal" title="Button"/>
+                                    <buttonConfiguration key="configuration" style="plain" title="創1:1"/>
+                                    <connections>
+                                        <action selector="doPickBook" destination="NIR-EB-XyM" eventType="primaryActionTriggered" id="Q0v-Yc-yII"/>
+                                    </connections>
+                                </button>
+                            </subviews>
+                            <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                            <constraints>
+                                <constraint firstAttribute="trailing" secondItem="w3r-8i-8lN" secondAttribute="trailing" constant="5" id="ESd-RI-wMX"/>
+                                <constraint firstItem="w3r-8i-8lN" firstAttribute="top" secondItem="Z6l-nk-HX1" secondAttribute="top" constant="5" id="NP5-UX-Xtk"/>
+                                <constraint firstItem="w3r-8i-8lN" firstAttribute="leading" secondItem="Z6l-nk-HX1" secondAttribute="leading" constant="5" id="pke-0b-qdE"/>
+                                <constraint firstAttribute="bottom" secondItem="w3r-8i-8lN" secondAttribute="bottom" constant="5" id="uJM-0O-KQK"/>
+                            </constraints>
+                        </view>
+                        <rightBarButtonItems>
+                            <barButtonItem title="Item" image="ellipsis" catalog="system" id="On1-8o-4pw"/>
+                            <barButtonItem title="Item" image="speaker.wave.3" catalog="system" id="el5-uK-7P0">
+                                <connections>
+                                    <action selector="doPlayAudio" destination="NIR-EB-XyM" id="9mk-Nr-TQQ"/>
+                                </connections>
+                            </barButtonItem>
+                        </rightBarButtonItems>
+                    </navigationItem>
+                    <connections>
+                        <outlet property="btnTitle" destination="w3r-8i-8lN" id="4vI-as-j1A"/>
+                    </connections>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="rd6-e4-Vdf" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
+            <point key="canvasLocation" x="-1585" y="-759"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="iYE-r5-wif">
+            <objects>
+                <navigationController id="WL0-aL-pda" sceneMemberID="viewController">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="Ac7-F8-a2C">
+                        <rect key="frame" x="0.0" y="20" width="375" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <connections>
+                        <segue destination="NIR-EB-XyM" kind="relationship" relationship="rootViewController" id="SCF-wd-Mi5"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="JOL-dI-ghp" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-1775" y="-824"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="ellipsis" catalog="system" width="128" height="37"/>
+        <image name="speaker.wave.3" catalog="system" width="128" height="84"/>
+        <systemColor name="secondaryLabelColor">
+            <color red="0.23529411764705882" green="0.23529411764705882" blue="0.2627450980392157" alpha="0.59999999999999998" colorSpace="custom" customColorSpace="sRGB"/>
+        </systemColor>
+        <systemColor name="systemBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+    </resources>
 </document>
