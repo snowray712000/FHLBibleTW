@@ -27,6 +27,30 @@
 		57BA20712B69173700E5638D /* EasyUIFont.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57BA20702B69173700E5638D /* EasyUIFont.swift */; };
 		57BA20732B69175A00E5638D /* EasyStringAttributes.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57BA20722B69175A00E5638D /* EasyStringAttributes.swift */; };
 		57BA20752B6917A800E5638D /* colors_for_dtext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57BA20742B6917A800E5638D /* colors_for_dtext.swift */; };
+		57BA20832B69219500E5638D /* OwningEventReference.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57BA20772B69219500E5638D /* OwningEventReference.swift */; };
+		57BA20842B69219500E5638D /* Event.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57BA20782B69219500E5638D /* Event.swift */; };
+		57BA20852B69219500E5638D /* ObservableChainingProxy.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57BA20792B69219500E5638D /* ObservableChainingProxy.swift */; };
+		57BA20862B69219500E5638D /* ObservableProxy.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57BA207A2B69219500E5638D /* ObservableProxy.swift */; };
+		57BA20872B69219500E5638D /* Protocols.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57BA207B2B69219500E5638D /* Protocols.swift */; };
+		57BA20882B69219500E5638D /* TupleObservable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57BA207C2B69219500E5638D /* TupleObservable.swift */; };
+		57BA20892B69219500E5638D /* Observable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57BA207D2B69219500E5638D /* Observable.swift */; };
+		57BA208A2B69219500E5638D /* EventSubscription.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57BA207E2B69219500E5638D /* EventSubscription.swift */; };
+		57BA208B2B69219500E5638D /* EventReference.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57BA207F2B69219500E5638D /* EventReference.swift */; };
+		57BA208D2B69219500E5638D /* ObservableReference.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57BA20822B69219500E5638D /* ObservableReference.swift */; };
+		57BA20912B6928EF00E5638D /* toString.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57BA20902B6928EF00E5638D /* toString.swift */; };
+		57BA209F2B6B390E00E5638D /* fhlCore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57BA20932B6B390E00E5638D /* fhlCore.swift */; };
+		57BA20A02B6B390E00E5638D /* DApiSbdag.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57BA20942B6B390E00E5638D /* DApiSbdag.swift */; };
+		57BA20A12B6B390E00E5638D /* DApiRt.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57BA20952B6B390E00E5638D /* DApiRt.swift */; };
+		57BA20A22B6B390E00E5638D /* uiabv.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57BA20962B6B390E00E5638D /* uiabv.swift */; };
+		57BA20A32B6B390E00E5638D /* DApiSd.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57BA20972B6B390E00E5638D /* DApiSd.swift */; };
+		57BA20A42B6B390E00E5638D /* DApiSc.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57BA20982B6B390E00E5638D /* DApiSc.swift */; };
+		57BA20A52B6B390E00E5638D /* DApiSe.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57BA20992B6B390E00E5638D /* DApiSe.swift */; };
+		57BA20A62B6B390E00E5638D /* DApiStwcbhdic.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57BA209A2B6B390E00E5638D /* DApiStwcbhdic.swift */; };
+		57BA20A72B6B390E00E5638D /* DApiQsb.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57BA209B2B6B390E00E5638D /* DApiQsb.swift */; };
+		57BA20A82B6B390E00E5638D /* DApiQp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57BA209C2B6B390E00E5638D /* DApiQp.swift */; };
+		57BA20A92B6B390E00E5638D /* DApiAu.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57BA209D2B6B390E00E5638D /* DApiAu.swift */; };
+		57BA20AA2B6B390E00E5638D /* FhlJson.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57BA209E2B6B390E00E5638D /* FhlJson.swift */; };
+		57BA20AD2B6B3A9400E5638D /* Date_fromString.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57BA20AC2B6B3A9400E5638D /* Date_fromString.swift */; };
 		57D1360D2B4A642000FBDA4D /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57D1360C2B4A642000FBDA4D /* AppDelegate.swift */; };
 		57D1360F2B4A642000FBDA4D /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57D1360E2B4A642000FBDA4D /* SceneDelegate.swift */; };
 		57D136112B4A642000FBDA4D /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57D136102B4A642000FBDA4D /* ViewController.swift */; };
@@ -78,6 +102,30 @@
 		57BA20702B69173700E5638D /* EasyUIFont.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EasyUIFont.swift; sourceTree = "<group>"; };
 		57BA20722B69175A00E5638D /* EasyStringAttributes.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EasyStringAttributes.swift; sourceTree = "<group>"; };
 		57BA20742B6917A800E5638D /* colors_for_dtext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = colors_for_dtext.swift; sourceTree = "<group>"; };
+		57BA20772B69219500E5638D /* OwningEventReference.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OwningEventReference.swift; sourceTree = "<group>"; };
+		57BA20782B69219500E5638D /* Event.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Event.swift; sourceTree = "<group>"; };
+		57BA20792B69219500E5638D /* ObservableChainingProxy.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ObservableChainingProxy.swift; sourceTree = "<group>"; };
+		57BA207A2B69219500E5638D /* ObservableProxy.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ObservableProxy.swift; sourceTree = "<group>"; };
+		57BA207B2B69219500E5638D /* Protocols.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Protocols.swift; sourceTree = "<group>"; };
+		57BA207C2B69219500E5638D /* TupleObservable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TupleObservable.swift; sourceTree = "<group>"; };
+		57BA207D2B69219500E5638D /* Observable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Observable.swift; sourceTree = "<group>"; };
+		57BA207E2B69219500E5638D /* EventSubscription.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EventSubscription.swift; sourceTree = "<group>"; };
+		57BA207F2B69219500E5638D /* EventReference.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EventReference.swift; sourceTree = "<group>"; };
+		57BA20822B69219500E5638D /* ObservableReference.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ObservableReference.swift; sourceTree = "<group>"; };
+		57BA20902B6928EF00E5638D /* toString.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = toString.swift; sourceTree = "<group>"; };
+		57BA20932B6B390E00E5638D /* fhlCore.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = fhlCore.swift; sourceTree = "<group>"; };
+		57BA20942B6B390E00E5638D /* DApiSbdag.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DApiSbdag.swift; sourceTree = "<group>"; };
+		57BA20952B6B390E00E5638D /* DApiRt.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DApiRt.swift; sourceTree = "<group>"; };
+		57BA20962B6B390E00E5638D /* uiabv.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = uiabv.swift; sourceTree = "<group>"; };
+		57BA20972B6B390E00E5638D /* DApiSd.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DApiSd.swift; sourceTree = "<group>"; };
+		57BA20982B6B390E00E5638D /* DApiSc.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DApiSc.swift; sourceTree = "<group>"; };
+		57BA20992B6B390E00E5638D /* DApiSe.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DApiSe.swift; sourceTree = "<group>"; };
+		57BA209A2B6B390E00E5638D /* DApiStwcbhdic.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DApiStwcbhdic.swift; sourceTree = "<group>"; };
+		57BA209B2B6B390E00E5638D /* DApiQsb.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DApiQsb.swift; sourceTree = "<group>"; };
+		57BA209C2B6B390E00E5638D /* DApiQp.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DApiQp.swift; sourceTree = "<group>"; };
+		57BA209D2B6B390E00E5638D /* DApiAu.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DApiAu.swift; sourceTree = "<group>"; };
+		57BA209E2B6B390E00E5638D /* FhlJson.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FhlJson.swift; sourceTree = "<group>"; };
+		57BA20AC2B6B3A9400E5638D /* Date_fromString.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Date_fromString.swift; sourceTree = "<group>"; };
 		57D136092B4A642000FBDA4D /* FHLBibleTW.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FHLBibleTW.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		57D1360C2B4A642000FBDA4D /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		57D1360E2B4A642000FBDA4D /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -143,6 +191,7 @@
 				57BA20552B68B76500E5638D /* BookNameLang.swift */,
 				57BA20632B68CE0C00E5638D /* BibleChapCount.swift */,
 				57BA20652B68CE2100E5638D /* BibleVerseCount.swift */,
+				57BA208F2B6928AC00E5638D /* toString */,
 			);
 			path = DAddress;
 			sourceTree = "<group>";
@@ -175,6 +224,58 @@
 			path = toAttributedString;
 			sourceTree = "<group>";
 		};
+		57BA20762B69219500E5638D /* Observable-Swift */ = {
+			isa = PBXGroup;
+			children = (
+				57BA20772B69219500E5638D /* OwningEventReference.swift */,
+				57BA20782B69219500E5638D /* Event.swift */,
+				57BA20792B69219500E5638D /* ObservableChainingProxy.swift */,
+				57BA207A2B69219500E5638D /* ObservableProxy.swift */,
+				57BA207B2B69219500E5638D /* Protocols.swift */,
+				57BA207C2B69219500E5638D /* TupleObservable.swift */,
+				57BA207D2B69219500E5638D /* Observable.swift */,
+				57BA207E2B69219500E5638D /* EventSubscription.swift */,
+				57BA207F2B69219500E5638D /* EventReference.swift */,
+				57BA20822B69219500E5638D /* ObservableReference.swift */,
+			);
+			path = "Observable-Swift";
+			sourceTree = "<group>";
+		};
+		57BA208F2B6928AC00E5638D /* toString */ = {
+			isa = PBXGroup;
+			children = (
+				57BA20902B6928EF00E5638D /* toString.swift */,
+			);
+			path = toString;
+			sourceTree = "<group>";
+		};
+		57BA20922B6B390E00E5638D /* fhlApi */ = {
+			isa = PBXGroup;
+			children = (
+				57BA20932B6B390E00E5638D /* fhlCore.swift */,
+				57BA20942B6B390E00E5638D /* DApiSbdag.swift */,
+				57BA20952B6B390E00E5638D /* DApiRt.swift */,
+				57BA20962B6B390E00E5638D /* uiabv.swift */,
+				57BA20972B6B390E00E5638D /* DApiSd.swift */,
+				57BA20982B6B390E00E5638D /* DApiSc.swift */,
+				57BA20992B6B390E00E5638D /* DApiSe.swift */,
+				57BA209A2B6B390E00E5638D /* DApiStwcbhdic.swift */,
+				57BA209B2B6B390E00E5638D /* DApiQsb.swift */,
+				57BA209C2B6B390E00E5638D /* DApiQp.swift */,
+				57BA209D2B6B390E00E5638D /* DApiAu.swift */,
+				57BA209E2B6B390E00E5638D /* FhlJson.swift */,
+			);
+			path = fhlApi;
+			sourceTree = "<group>";
+		};
+		57BA20AB2B6B3A7800E5638D /* Basic */ = {
+			isa = PBXGroup;
+			children = (
+				57BA20AC2B6B3A9400E5638D /* Date_fromString.swift */,
+			);
+			path = Basic;
+			sourceTree = "<group>";
+		};
 		57D136002B4A642000FBDA4D = {
 			isa = PBXGroup;
 			children = (
@@ -198,6 +299,9 @@
 		57D1360B2B4A642000FBDA4D /* FHLBibleTW */ = {
 			isa = PBXGroup;
 			children = (
+				57BA20AB2B6B3A7800E5638D /* Basic */,
+				57BA20922B6B390E00E5638D /* fhlApi */,
+				57BA20762B69219500E5638D /* Observable-Swift */,
 				57BA205D2B68C82600E5638D /* SINQ */,
 				57BA20572B68B7F600E5638D /* BookNameConstants */,
 				57BA20522B68B6FF00E5638D /* DAddress */,
@@ -378,25 +482,49 @@
 				57D136112B4A642000FBDA4D /* ViewController.swift in Sources */,
 				57BA20642B68CE0C00E5638D /* BibleChapCount.swift in Sources */,
 				57BA20712B69173700E5638D /* EasyUIFont.swift in Sources */,
+				57BA20A62B6B390E00E5638D /* DApiStwcbhdic.swift in Sources */,
 				57D136412B4A76C200FBDA4D /* VCRead.swift in Sources */,
 				57BA204D2B68B50300E5638D /* DText_Clone.swift in Sources */,
+				57BA20AD2B6B3A9400E5638D /* Date_fromString.swift in Sources */,
 				57BA20592B68B7FF00E5638D /* BookNameConstants.swift in Sources */,
 				57BA20732B69175A00E5638D /* EasyStringAttributes.swift in Sources */,
 				57BA204F2B68B54F00E5638D /* DText_IsTheSame.swift in Sources */,
 				57D1360D2B4A642000FBDA4D /* AppDelegate.swift in Sources */,
+				57BA20862B69219500E5638D /* ObservableProxy.swift in Sources */,
 				57BA20662B68CE2100E5638D /* BibleVerseCount.swift in Sources */,
+				57BA20852B69219500E5638D /* ObservableChainingProxy.swift in Sources */,
+				57BA20842B69219500E5638D /* Event.swift in Sources */,
+				57BA209F2B6B390E00E5638D /* fhlCore.swift in Sources */,
 				57BA20562B68B76500E5638D /* BookNameLang.swift in Sources */,
+				57BA208D2B69219500E5638D /* ObservableReference.swift in Sources */,
+				57BA20A22B6B390E00E5638D /* uiabv.swift in Sources */,
+				57BA20832B69219500E5638D /* OwningEventReference.swift in Sources */,
+				57BA20A32B6B390E00E5638D /* DApiSd.swift in Sources */,
 				57D136172B4A642000FBDA4D /* FHLBibleTW.xcdatamodeld in Sources */,
+				57BA20A42B6B390E00E5638D /* DApiSc.swift in Sources */,
 				57BA206C2B69079B00E5638D /* to_attributedString.swift in Sources */,
 				57BA206A2B68D07F00E5638D /* DAddress_Init.swift in Sources */,
 				57BA20482B68991E00E5638D /* DFoot.swift in Sources */,
+				57BA20882B69219500E5638D /* TupleObservable.swift in Sources */,
 				57BA20752B6917A800E5638D /* colors_for_dtext.swift in Sources */,
 				57BA20542B68B70C00E5638D /* DAddress.swift in Sources */,
 				57D1360F2B4A642000FBDA4D /* SceneDelegate.swift in Sources */,
+				57BA208A2B69219500E5638D /* EventSubscription.swift in Sources */,
+				57BA20A52B6B390E00E5638D /* DApiSe.swift in Sources */,
+				57BA20872B69219500E5638D /* Protocols.swift in Sources */,
 				57BA20462B6898DE00E5638D /* DText.swift in Sources */,
+				57BA20912B6928EF00E5638D /* toString.swift in Sources */,
+				57BA20A72B6B390E00E5638D /* DApiQsb.swift in Sources */,
+				57BA20892B69219500E5638D /* Observable.swift in Sources */,
 				57BA20682B68CE4A00E5638D /* VerseRange.swift in Sources */,
+				57BA20A12B6B390E00E5638D /* DApiRt.swift in Sources */,
+				57BA20AA2B6B390E00E5638D /* FhlJson.swift in Sources */,
+				57BA20A82B6B390E00E5638D /* DApiQp.swift in Sources */,
+				57BA20A02B6B390E00E5638D /* DApiSbdag.swift in Sources */,
+				57BA208B2B69219500E5638D /* EventReference.swift in Sources */,
 				57BA20512B68B5A800E5638D /* DText_others.swift in Sources */,
 				57BA204B2B68B4E100E5638D /* DText_Init.swift in Sources */,
+				57BA20A92B6B390E00E5638D /* DApiAu.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
