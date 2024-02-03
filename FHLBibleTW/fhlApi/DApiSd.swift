@@ -47,11 +47,3 @@ func removeSn000(_ a1:String?)-> String? {
     if a1 == nil { return nil }
     return ijnReplaceString(try! NSRegularExpression(pattern: #"^[0]*"#, options: []), a1!, "")
 }
-/// 從  Basic03 學到的
-/// 基本: 簡化呼叫 replaceMatches 的參數
-public func ijnReplaceString(_ reg: NSRegularExpression,_ str:String,_ strReplaced:String ) ->String {
-    let r1 : NSMutableString = NSMutableString(string: str)
-    let r2 = r1 as String
-    reg.replaceMatches(in: r1, options: [], range: NSRange(r2.startIndex..<r2.endIndex, in: r2), withTemplate: strReplaced)
-    return r1 as String
-}
