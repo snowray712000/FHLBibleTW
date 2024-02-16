@@ -4,6 +4,8 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="21678"/>
+        <capability name="Named colors" minToolsVersion="9.0"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -100,7 +102,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="rd6-e4-Vdf" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-1585" y="-759"/>
+            <point key="canvasLocation" x="-1060" y="-737"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="iYE-r5-wif">
@@ -118,15 +120,158 @@
             </objects>
             <point key="canvasLocation" x="-1775" y="-824"/>
         </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="OfA-Pn-Ts6">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="zT6-gp-ZCI" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="IcA-vq-3Uv">
+                        <rect key="frame" x="0.0" y="20" width="375" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="Zxo-dP-RP6" kind="relationship" relationship="rootViewController" id="My1-eZ-LLV"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="bUc-p6-hWX" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-2626" y="-1925"/>
+        </scene>
+        <!--書卷選擇-->
+        <scene sceneID="BbZ-nm-WcF">
+            <objects>
+                <viewController storyboardIdentifier="VCBookChapPicker" id="Zxo-dP-RP6" customClass="VCBookChapPicker" customModule="FHLCommon" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="61f-xn-7OB">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="0fO-VK-HKT">
+                                <rect key="frame" x="16" y="64" width="343" height="32"/>
+                                <subviews>
+                                    <stackView opaque="NO" contentMode="scaleToFill" distribution="equalSpacing" alignment="center" spacing="12" translatesAutoresizingMaskIntoConstraints="NO" id="Ym3-Ht-ZmE">
+                                        <rect key="frame" x="0.0" y="0.0" width="374.5" height="32"/>
+                                        <subviews>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dvX-sM-AIA">
+                                                <rect key="frame" x="0.0" y="0.0" width="47" height="32"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="18"/>
+                                                <inset key="contentEdgeInsets" minX="5" minY="5" maxX="5" maxY="5"/>
+                                                <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                                                <state key="normal" title="舊約">
+                                                    <color key="titleColor" systemColor="systemBlueColor"/>
+                                                </state>
+                                                <connections>
+                                                    <action selector="switchOldTestment" destination="Zxo-dP-RP6" eventType="primaryActionTriggered" id="mbz-x4-05b"/>
+                                                </connections>
+                                            </button>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="RtC-Ex-TVf">
+                                                <rect key="frame" x="59" y="0.0" width="47" height="32"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="18"/>
+                                                <inset key="contentEdgeInsets" minX="5" minY="5" maxX="5" maxY="5"/>
+                                                <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                                                <state key="normal" title="新約">
+                                                    <color key="titleColor" systemColor="systemBlueColor"/>
+                                                </state>
+                                                <connections>
+                                                    <action selector="switchNewTestment" destination="Zxo-dP-RP6" eventType="primaryActionTriggered" id="hd8-3A-Loz"/>
+                                                </connections>
+                                            </button>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ifF-Cb-0eV">
+                                                <rect key="frame" x="118" y="0.0" width="29" height="32"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="18"/>
+                                                <inset key="contentEdgeInsets" minX="5" minY="5" maxX="5" maxY="5"/>
+                                                <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                                                <state key="normal" title="章">
+                                                    <color key="titleColor" systemColor="systemBlueColor"/>
+                                                </state>
+                                                <connections>
+                                                    <action selector="switchToChap" destination="Zxo-dP-RP6" eventType="primaryActionTriggered" id="5FD-D9-utU"/>
+                                                </connections>
+                                            </button>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ama-tL-lBH">
+                                                <rect key="frame" x="159" y="0.0" width="102" height="32"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="18"/>
+                                                <inset key="contentEdgeInsets" minX="5" minY="5" maxX="5" maxY="5"/>
+                                                <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                                                <state key="normal" title="希伯來順序">
+                                                    <color key="titleColor" systemColor="systemBlueColor"/>
+                                                </state>
+                                                <connections>
+                                                    <action selector="switchHebrewOlder" destination="Zxo-dP-RP6" eventType="primaryActionTriggered" id="kqH-cj-N7S"/>
+                                                </connections>
+                                            </button>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Faq-KO-Ei5">
+                                                <rect key="frame" x="273" y="0.0" width="101.5" height="32"/>
+                                                <inset key="contentEdgeInsets" minX="5" minY="5" maxX="5" maxY="5"/>
+                                                <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                                                <state key="normal" title="完整名稱" image="xmark" catalog="system">
+                                                    <color key="titleColor" name="AccentColor"/>
+                                                </state>
+                                                <connections>
+                                                    <action selector="switchFullnameSetting" destination="Zxo-dP-RP6" eventType="primaryActionTriggered" id="Uj8-4H-Syn"/>
+                                                </connections>
+                                            </button>
+                                        </subviews>
+                                    </stackView>
+                                </subviews>
+                                <constraints>
+                                    <constraint firstItem="Ym3-Ht-ZmE" firstAttribute="top" secondItem="LTy-Q5-EQt" secondAttribute="top" id="Cfs-ep-EbH"/>
+                                    <constraint firstItem="Ym3-Ht-ZmE" firstAttribute="height" secondItem="LTy-Q5-EQt" secondAttribute="height" id="RVo-ce-Tax"/>
+                                    <constraint firstItem="Ym3-Ht-ZmE" firstAttribute="top" secondItem="zJM-ZN-6Ww" secondAttribute="top" id="VZN-2U-0oD"/>
+                                    <constraint firstItem="Ym3-Ht-ZmE" firstAttribute="bottom" secondItem="zJM-ZN-6Ww" secondAttribute="bottom" id="WvI-Sx-yp9"/>
+                                    <constraint firstItem="Ym3-Ht-ZmE" firstAttribute="leading" secondItem="zJM-ZN-6Ww" secondAttribute="leading" id="ZcJ-OQ-j8K"/>
+                                    <constraint firstItem="Ym3-Ht-ZmE" firstAttribute="trailing" secondItem="zJM-ZN-6Ww" secondAttribute="trailing" id="l3k-Wc-Xha"/>
+                                </constraints>
+                                <viewLayoutGuide key="contentLayoutGuide" id="zJM-ZN-6Ww"/>
+                                <viewLayoutGuide key="frameLayoutGuide" id="LTy-Q5-EQt"/>
+                            </scrollView>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="tG1-PL-bpC" customClass="ViewButtons" customModule="FHLCommon">
+                                <rect key="frame" x="16" y="101" width="343" height="555"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                            </view>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="aby-xC-Val"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="0fO-VK-HKT" firstAttribute="leading" secondItem="aby-xC-Val" secondAttribute="leading" constant="16" id="BCd-6v-J9E"/>
+                            <constraint firstItem="aby-xC-Val" firstAttribute="bottom" secondItem="tG1-PL-bpC" secondAttribute="bottom" constant="11" id="Bls-ru-MRl"/>
+                            <constraint firstItem="aby-xC-Val" firstAttribute="trailing" secondItem="tG1-PL-bpC" secondAttribute="trailing" constant="16" id="Vz2-hi-MPH"/>
+                            <constraint firstItem="tG1-PL-bpC" firstAttribute="leading" secondItem="aby-xC-Val" secondAttribute="leading" constant="16" id="ZKe-qS-2kY"/>
+                            <constraint firstItem="aby-xC-Val" firstAttribute="trailing" secondItem="0fO-VK-HKT" secondAttribute="trailing" constant="16" id="b17-yq-OIH"/>
+                            <constraint firstItem="tG1-PL-bpC" firstAttribute="top" secondItem="0fO-VK-HKT" secondAttribute="bottom" constant="5" id="wqZ-w2-q4E"/>
+                            <constraint firstItem="0fO-VK-HKT" firstAttribute="top" secondItem="aby-xC-Val" secondAttribute="top" id="yh4-48-Swp"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" title="書卷選擇" id="CRy-NI-eSP"/>
+                    <connections>
+                        <outlet property="btnFullname" destination="Faq-KO-Ei5" id="yOT-Iz-BFs"/>
+                        <outlet property="viewCollection" destination="tG1-PL-bpC" id="r8x-zc-pzy"/>
+                        <outletCollection property="btnOpts" destination="dvX-sM-AIA" collectionClass="NSMutableArray" id="MNS-ZA-by9"/>
+                        <outletCollection property="btnOpts" destination="RtC-Ex-TVf" collectionClass="NSMutableArray" id="5GG-2D-Qlu"/>
+                        <outletCollection property="btnOpts" destination="ifF-Cb-0eV" collectionClass="NSMutableArray" id="iha-fV-nJh"/>
+                        <outletCollection property="btnOpts" destination="ama-tL-lBH" collectionClass="NSMutableArray" id="lQI-sp-Fwf"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="SaT-sc-Bxx" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-1920" y="-1925"/>
+        </scene>
     </scenes>
     <resources>
         <image name="ellipsis" catalog="system" width="128" height="37"/>
         <image name="speaker.wave.3" catalog="system" width="128" height="84"/>
+        <image name="xmark" catalog="system" width="128" height="113"/>
+        <namedColor name="AccentColor">
+            <color red="0.0" green="0.46000000000000002" blue="0.89000000000000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
         <systemColor name="secondaryLabelColor">
             <color red="0.23529411764705882" green="0.23529411764705882" blue="0.2627450980392157" alpha="0.59999999999999998" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+        <systemColor name="systemBlueColor">
+            <color red="0.0" green="0.47843137254901963" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
     </resources>
 </document>

@@ -1,0 +1,33 @@
+
+/* Class = "UINavigationItem"; title = "書卷選擇"; ObjectID = "CRy-NI-eSP"; */
+"CRy-NI-eSP.title" = "書卷選擇";
+
+/* Class = "UIButton"; normalTitle = "完整名稱"; ObjectID = "Faq-KO-Ei5"; */
+"Faq-KO-Ei5.normalTitle" = "完整名稱";
+
+/* Class = "UIBarButtonItem"; title = "Item"; ObjectID = "On1-8o-4pw"; */
+"On1-8o-4pw.title" = "Item";
+
+/* Class = "UIButton"; normalTitle = "新約"; ObjectID = "RtC-Ex-TVf"; */
+"RtC-Ex-TVf.normalTitle" = "新約";
+
+/* Class = "UIButton"; normalTitle = "希伯來順序"; ObjectID = "ama-tL-lBH"; */
+"ama-tL-lBH.normalTitle" = "希伯來順序";
+
+/* Class = "UIButton"; normalTitle = "舊約"; ObjectID = "dvX-sM-AIA"; */
+"dvX-sM-AIA.normalTitle" = "舊約";
+
+/* Class = "UIBarButtonItem"; title = "Item"; ObjectID = "el5-uK-7P0"; */
+"el5-uK-7P0.title" = "Item";
+
+/* Class = "UIButton"; normalTitle = "章"; ObjectID = "ifF-Cb-0eV"; */
+"ifF-Cb-0eV.normalTitle" = "章";
+
+/* Class = "UIButton"; configuration.title = "創1:1"; ObjectID = "w3r-8i-8lN"; */
+"w3r-8i-8lN.configuration.title" = "創1:1";
+
+/* Class = "UIButton"; normalTitle = "Button"; ObjectID = "w3r-8i-8lN"; */
+"w3r-8i-8lN.normalTitle" = "Button";
+
+/* Class = "UILabel"; text = "verse"; ObjectID = "yRt-Py-cyk"; */
+"yRt-Py-cyk.text" = "verse";

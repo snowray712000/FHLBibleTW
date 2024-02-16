@@ -31,7 +31,7 @@ func to_string( addrs:[DAddress],tp: TpToStringOfAddresses)->NSMutableAttributed
     let r1 = "\(addrs[0].verse)-\(addrs[addrs.count-1].verse)"
     return DText_To_AttributedString(dtexts: [DText(r1)], isSnVisible: false, isTCSupport: true)
 }
-class VCRead: UITableViewController {
+public class VCRead: UITableViewController {
     typealias VerseRange = [DAddress]
     typealias DData = [(VerseRange,[DText])]
     var data$: Observable<DData> = Observable([])
@@ -41,33 +41,64 @@ class VCRead: UITableViewController {
      */
     var tpAddresses: TpToStringOfAddresses = .none
     
+    var _addrsCur: VerseRange = []
+    var _addrsCurChanged$: Observable<Int> = Observable(0)
+    
     @IBOutlet weak var btnTitle: UIButton!
     
-    override func viewDidLoad() {
+    public override func viewDidLoad() {
         super.viewDidLoad()
         
         btnTitle.setTitle("TEST", for: .normal)
         
         data$.afterChange += { [weak self] (_, new) in
+            guard let self = self else { return }
             
             // update tpAddresses
-            var r1:[DAddress] = []
+            var r1:[DAddress] = self._addrsCur
             for a1 in sinq( new ).select({$0.0}){
                 r1.append(contentsOf: a1)
             }
-            self?.tpAddresses = test_tpToStringOfAddresses(r1)
+            self.tpAddresses = test_tpToStringOfAddresses(r1)
             
-            self?.tableView.reloadData()
+            self.tableView.reloadData()
+        }
+        
+        // 負責 因 addr 改變，設定 title
+        _addrsCurChanged$.afterChange += { [weak self] (_, new) in
+            guard let self = self else { return }
+            
+            let r1 = self._addrsCur
+            let r2 = get_booknames_via_tp(tp: ManagerLangSet.s.curTpBookNameLang )[r1[0].book - 1]
+            
+            self.btnTitle.setTitle("\(r2) \(r1[0].chap)", for: .normal)
+        }
+        // 負責 因 addr 改變，取得資料，並且 trigger data& changed
+        _addrsCurChanged$.afterChange += { [weak self] (_, new) in
+            guard let self = self else { return }
+
+            let r1 = self._addrsCur
+            let r2 = get_booknames_via_tp(tp: ManagerLangSet.s.curTpBookNameLang )[r1[0].book - 1]
+            let r3 = "\(r2)\(r1[0].chap)"
+            print(r3)
+            // test1
+            // ttvcl2021 ttvhl2021
+            fhlQsb("strong=0&gb=0&version=ttvhl2021&qstr=\(r3)") { data in
+                print(data)
+                if data.isSuccess() {
+                    print( sinq( data.record ).select({$0.bible_text}).joined(separator: "\n") )
+                }
+            }
         }
         
         self.tableView.dataSource = self
     }
     // datasource
-    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+    public override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return data$.value.count
     }
     // datasource cell
-    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+    public override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "VCReadCell", for: indexPath) as! VCReadCell
         let dtexts: [DText] = [DText("仝此個所在有閣講：「𪜶絕對𣍐當進入我所賜的安歇。」",isTitle1: true),DText("這是一般文字")]
         
@@ -77,17 +108,17 @@ class VCRead: UITableViewController {
         cell.labelVerse?.attributedText = to_string(addrs: a1.0, tp: self.tpAddresses)
         return cell
     }
-    
-    
+
     @IBAction func doPickBook(){
-        print("doPickBook")
-        
-        fhlQsb("strong=0&gb=0&version=ttvh&qstr=詩134") { data in
-            print(data)
-            if data.isSuccess() {
-                print( sinq( data.record ).select({$0.bible_text}).joined(separator: "\n") )                            
-            }
+        let r1 = self.gVCBookChapPicker()
+        r1.onClick$.addCallback {[weak self] sender, pData in
+            guard let self = self else { return }
+            guard let data = pData else { return }
+            
+            self._addrsCur = DAddress(data.idBook, data.idChap, 1).generateEntireThisChap()
+            self._addrsCurChanged$ <- (self._addrsCurChanged$.value + 1)
         }
+        navigationController?.pushViewController(r1, animated: false)
     }
     @IBAction func doPlayAudio(){
         print("doPlayAudio")
