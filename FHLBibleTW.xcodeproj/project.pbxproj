@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		57BA20432B664A9900E5638D /* open_han31.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 57BA20422B664A9900E5638D /* open_han31.ttf */; };
+		57BA22D42B8614A500E5638D /* FMDB in Frameworks */ = {isa = PBXBuildFile; productRef = 57BA22D32B8614A500E5638D /* FMDB */; };
 		57D1360D2B4A642000FBDA4D /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57D1360C2B4A642000FBDA4D /* AppDelegate.swift */; };
 		57D1360F2B4A642000FBDA4D /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57D1360E2B4A642000FBDA4D /* SceneDelegate.swift */; };
 		57D136142B4A642000FBDA4D /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 57D136122B4A642000FBDA4D /* Main.storyboard */; };
@@ -64,6 +65,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				57BA22D42B8614A500E5638D /* FMDB in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -161,6 +163,9 @@
 			dependencies = (
 			);
 			name = FHLBibleTW;
+			packageProductDependencies = (
+				57BA22D32B8614A500E5638D /* FMDB */,
+			);
 			productName = FHLBibleTW;
 			productReference = 57D136092B4A642000FBDA4D /* FHLBibleTW.app */;
 			productType = "com.apple.product-type.application";
@@ -235,6 +240,9 @@
 				"zh-Hans",
 			);
 			mainGroup = 57D136002B4A642000FBDA4D;
+			packageReferences = (
+				57BA22D22B8614A500E5638D /* XCRemoteSwiftPackageReference "fmdb" */,
+			);
 			productRefGroup = 57D1360A2B4A642000FBDA4D /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -632,6 +640,25 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		57BA22D22B8614A500E5638D /* XCRemoteSwiftPackageReference "fmdb" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/ccgus/fmdb.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 2.0.0;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		57BA22D32B8614A500E5638D /* FMDB */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 57BA22D22B8614A500E5638D /* XCRemoteSwiftPackageReference "fmdb" */;
+			productName = FMDB;
+		};
+/* End XCSwiftPackageProductDependency section */
 
 /* Begin XCVersionGroup section */
 		57D136152B4A642000FBDA4D /* FHLBibleTW.xcdatamodeld */ = {

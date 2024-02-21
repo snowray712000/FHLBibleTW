@@ -28,8 +28,31 @@ func test_tpToStringOfAddresses(_ r1:[DAddress])->TpToStringOfAddresses {
 func to_string( addrs:[DAddress],tp: TpToStringOfAddresses)->NSMutableAttributedString {
     if tp == .none { return NSAttributedString() as! NSMutableAttributedString}
     
-    let r1 = "\(addrs[0].verse)-\(addrs[addrs.count-1].verse)"
-    return DText_To_AttributedString(dtexts: [DText(r1)], isSnVisible: false, isTCSupport: true)
+    var re = "\(addrs[0].verse)"
+    if tp == .verse {
+        if addrs.count > 1 {
+            re = "\(addrs[0].verse)-\(addrs[addrs.count-1].verse)"
+        }
+    } else if tp == .chap {
+        if addrs.count == 1 {
+            let a1 = addrs[0]
+            re = "\(a1.chap):\(a1.verse)"
+        } else {
+            let a1 = addrs[0]
+            let a2 = addrs[addrs.count-1]
+            re = "\(a1.chap):\(a1.verse)-\(a2.verse)"
+        }
+    } else {
+        if addrs.count == 1 {
+            let a1 = addrs[0]
+            let bookna = get_booknames_via_tp(tp: ManagerLangSet.s.curTpBookNameLang)[a1.book-1]
+            re = "\(bookna)\(a1.chap):\(a1.verse)"
+        } else {
+            re = VerseRangeToString().main(addrs)
+        }
+    }
+        
+    return DText_To_AttributedString(dtexts: [DText(re)], isSnVisible: false, isTCSupport: true)
 }
 public class VCRead: UITableViewController {
     typealias VerseRange = [DAddress]
@@ -41,7 +64,7 @@ public class VCRead: UITableViewController {
      */
     var tpAddresses: TpToStringOfAddresses = .none
     
-    var _addrsCur: VerseRange = []
+    var _addrsCur: VerseRange = [DAddress(45,1,1)]
     var _addrsCurChanged$: Observable<Int> = Observable(0)
     
     @IBOutlet weak var btnTitle: UIButton!
@@ -49,7 +72,7 @@ public class VCRead: UITableViewController {
     public override func viewDidLoad() {
         super.viewDidLoad()
         
-        btnTitle.setTitle("TEST", for: .normal)
+        btnTitle.setTitle("羅13", for: .normal)
         
         data$.afterChange += { [weak self] (_, new) in
             guard let self = self else { return }
@@ -61,7 +84,9 @@ public class VCRead: UITableViewController {
             }
             self.tpAddresses = test_tpToStringOfAddresses(r1)
             
-            self.tableView.reloadData()
+            DispatchQueue.main.async {
+                self.tableView.reloadData() // UITableViewController.tableView must be used from main thread only
+            }
         }
         
         // 負責 因 addr 改變，設定 title
@@ -80,18 +105,44 @@ public class VCRead: UITableViewController {
             let r1 = self._addrsCur
             let r2 = get_booknames_via_tp(tp: ManagerLangSet.s.curTpBookNameLang )[r1[0].book - 1]
             let r3 = "\(r2)\(r1[0].chap)"
-            print(r3)
             // test1
             // ttvcl2021 ttvhl2021
-            fhlQsb("strong=0&gb=0&version=ttvhl2021&qstr=\(r3)") { data in
-                print(data)
+            fhlQsb("strong=0&gb=0&version=ttvcl2021&qstr=\(r3)") { data in
+//                print(data)
                 if data.isSuccess() {
-                    print( sinq( data.record ).select({$0.bible_text}).joined(separator: "\n") )
+//                    print( sinq( data.record ).select({$0.bible_text}).joined(separator: "\n") )
+                    
+                    var oneLines: [DOneLine] = []
+                    for a1 in data.record {
+                        let oneLine = DOneLine()
+                        let book = get_id_from_bookname(a1.engs, tp: .Matt)
+                        oneLine.address2 = DAddress(book,a1.chap,a1.sec)
+                        oneLine.children = [DText(a1.bible_text)]
+                        oneLine.ver = "ttvcl2021"
+                        oneLines.append(oneLine)
+                    }
+                    
+                    let r2 = BibleText2DText().main(oneLines, "ttvcl2021")
+                    
+                    var results: DData = []
+                    for a1 in r2{
+                        let verserange = a1.addresses2!
+                        let dtexts = a1.children!
+                        results.append((verserange, dtexts))
+                    }
+                    
+                    self.data$ <- results
+                    
+                    
                 }
             }
         }
         
         self.tableView.dataSource = self
+        
+        // default
+        _addrsCur = [DAddress(45,1,1)]
+        _addrsCurChanged$ <- 0
     }
     // datasource
     public override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -111,6 +162,7 @@ public class VCRead: UITableViewController {
 
     @IBAction func doPickBook(){
         let r1 = self.gVCBookChapPicker()
+        r1.initBeforePushVC(_addrsCur[0].book, _addrsCur[0].chap)
         r1.onClick$.addCallback {[weak self] sender, pData in
             guard let self = self else { return }
             guard let data = pData else { return }
