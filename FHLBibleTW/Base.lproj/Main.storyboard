@@ -68,7 +68,7 @@
                     <navigationItem key="navigationItem" id="FsQ-KZ-s5x">
                         <nil key="title"/>
                         <view key="titleView" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Z6l-nk-HX1">
-                            <rect key="frame" x="111.5" y="0.0" width="142" height="44"/>
+                            <rect key="frame" x="55.5" y="0.0" width="142" height="44"/>
                             <subviews>
                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="w3r-8i-8lN">
                                     <rect key="frame" x="5" y="5" width="132" height="34"/>
@@ -89,6 +89,11 @@
                         </view>
                         <rightBarButtonItems>
                             <barButtonItem title="Item" image="ellipsis" catalog="system" id="On1-8o-4pw"/>
+                            <barButtonItem title="Item" image="book.circle" catalog="system" id="ATY-kH-gWa">
+                                <connections>
+                                    <action selector="doSwitchVersions" destination="NIR-EB-XyM" id="yRl-Qd-giR"/>
+                                </connections>
+                            </barButtonItem>
                             <barButtonItem title="Item" image="speaker.wave.3" catalog="system" id="el5-uK-7P0">
                                 <connections>
                                     <action selector="doPlayAudio" destination="NIR-EB-XyM" id="9mk-Nr-TQQ"/>
@@ -258,6 +263,7 @@
         </scene>
     </scenes>
     <resources>
+        <image name="book.circle" catalog="system" width="128" height="123"/>
         <image name="ellipsis" catalog="system" width="128" height="37"/>
         <image name="speaker.wave.3" catalog="system" width="128" height="84"/>
         <image name="xmark" catalog="system" width="128" height="113"/>
