@@ -88,20 +88,22 @@
                             </constraints>
                         </view>
                         <rightBarButtonItems>
-                            <barButtonItem title="Item" image="ellipsis" catalog="system" id="On1-8o-4pw"/>
-                            <barButtonItem title="Item" image="book.circle" catalog="system" id="ATY-kH-gWa">
-                                <connections>
-                                    <action selector="doSwitchVersions" destination="NIR-EB-XyM" id="yRl-Qd-giR"/>
-                                </connections>
-                            </barButtonItem>
+                            <barButtonItem title="Item" image="ellipsis" catalog="system" id="On1-8o-4pw" userLabel="Btn More"/>
                             <barButtonItem title="Item" image="speaker.wave.3" catalog="system" id="el5-uK-7P0">
                                 <connections>
                                     <action selector="doPlayAudio" destination="NIR-EB-XyM" id="9mk-Nr-TQQ"/>
                                 </connections>
                             </barButtonItem>
+                            <barButtonItem title="Item" image="book.circle" catalog="system" id="ATY-kH-gWa" userLabel="Btn Version">
+                                <connections>
+                                    <action selector="doSwitchVersions" destination="NIR-EB-XyM" id="yRl-Qd-giR"/>
+                                </connections>
+                            </barButtonItem>
                         </rightBarButtonItems>
                     </navigationItem>
                     <connections>
+                        <outlet property="btnAudio" destination="el5-uK-7P0" id="0ih-XN-XaY"/>
+                        <outlet property="btnMore2" destination="On1-8o-4pw" id="9TK-dg-2ZI"/>
                         <outlet property="btnTitle" destination="w3r-8i-8lN" id="4vI-as-j1A"/>
                     </connections>
                 </tableViewController>
