@@ -119,12 +119,32 @@ public class VCRead: UITableViewController {
     
     var _addrsCur: VerseRange = [DAddress(45,1,1)]
     var _addrsCurChanged$: Observable<Int> = Observable(0)
-    
+    lazy var _swipeHelper: SwipeHelp = SwipeHelp(view: self.view)
     @IBOutlet weak var btnTitle: UIButton!
+    @IBOutlet weak var btnMore2: UIBarButtonItem!
+    @IBOutlet weak var btnAudio: UIBarButtonItem!
     
     public override func viewDidLoad() {
         super.viewDidLoad()
         
+        // 還沒開發，發版本前，先隱藏起來
+        btnMore2.setValue(true, forKey: "hidden")
+        btnAudio.setValue(true, forKey: "hidden")
+        
+        _swipeHelper.addSwipe(dir: .left)
+        _swipeHelper.addSwipe(dir: .right)
+        _swipeHelper.onSwipe$.afterChange += { [weak self] (_, new) in
+            guard let self = self else { return }
+            if new.direction == .left {
+                let addrs = VerseRangeGoNextChap().goPrev(self._addrsCur)
+                self._addrsCur = addrs
+                self._addrsCurChanged$.value += 1
+            } else if new.direction == .right {
+                let addrs = VerseRangeGoNextChap().goNext(self._addrsCur)
+                self._addrsCur = addrs
+                self._addrsCurChanged$.value += 1
+            }
+        }
         data$.afterChange += { [weak self] (_, new) in
             guard let self = self else { return }
             
@@ -292,4 +312,80 @@ class VCReadCell : UITableViewCell{
     @IBOutlet weak var labelText: UILabel!
     @IBOutlet weak var labelVerse: UILabel!
     
+}
+/// 手勢，向左滑 向右滑
+/// lazy var _swipeHelp = SwipeHelp(view: self.view)
+class SwipeHelp {
+    init(view: UIView){
+        self.view = view
+    }
+    // 加上 lazy 就能使用 self
+    lazy var onSwipe$: Observable<UISwipeGestureRecognizer> = Observable(UISwipeGestureRecognizer(target: self, action: #selector(doSwipe(sender:))))
+//    var onSwipe$: IjnEvent<Any,UISwipeGestureRecognizer> = IjnEvent()
+    
+    private var view: UIView!
+    func addSwipe(dir: UISwipeGestureRecognizer.Direction, numberOfTouches: Int = 1){
+        let r1 = UISwipeGestureRecognizer(target: self, action: #selector(doSwipe(sender:)))
+        r1.direction = dir
+        r1.numberOfTouchesRequired = numberOfTouches
+        view.addGestureRecognizer(r1)
+        
+        _gestures.append(r1)
+    }
+    @objc private func doSwipe(sender: UISwipeGestureRecognizer){
+        onSwipe$ <- sender
+//        onSwipe$.trigger(self, sender)
+     }
+    private var _gestures: [UISwipeGestureRecognizer] = []
+}
+/// 按 goNext 按鈕時，要用到的
+/// 可以直接用 VerseRange.goNext 與 .goPrev
+class VerseRangeGoNextChap: NSObject {
+    typealias VerseRange = [DAddress]
+    func goPrev(_ a:VerseRange)->VerseRange {
+        
+        if a.count == 0 { return vDefault }
+        
+        let r1 = a[0]
+        
+        let bk = r1.book
+        let ch = r1.chap
+        if ch == 1 {
+            // 換書卷
+            if bk == 1 {
+                return gChap(66, BibleChapCount.getChapCount(66))
+            } else {
+                return gChap(bk-1, BibleChapCount.getChapCount(bk-1))
+            }
+        } else {
+            return gChap(bk, ch-1)
+        }
+    }
+    func goNext(_ a:VerseRange)->VerseRange {
+        if a.count == 0 { return vDefault }
+        
+        let r1 = a[0]
+        
+        let bk = r1.book
+        let ch = r1.chap
+        let cntThisBk = BibleChapCount.getChapCount(bk)
+        if ch != cntThisBk {
+            return gChap(bk, ch+1)
+        } else {
+            // 換書卷
+            if bk == 66 {
+                return gChap(1, 1)
+            } else {
+                return gChap(bk+1, 1)
+            }
+        }
+    }
+    fileprivate func gChap(_ bk:Int, _ ch: Int) -> [DAddress] {
+        return DAddress(book: bk, chap: ch, verse: 1).generateEntireThisChap()
+    }
+    fileprivate var vDefault: VerseRange {
+        get {
+            return [DAddress(book: 45, chap: 1, verse: 1)]
+        }
+    }
 }
