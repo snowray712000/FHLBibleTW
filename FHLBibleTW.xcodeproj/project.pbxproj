@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		5732121E2BA1989B006100CF /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 573212202BA1989B006100CF /* InfoPlist.strings */; };
+		573212242BA19F7A006100CF /* FHLCommon.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 573212232BA19F7A006100CF /* FHLCommon.framework */; };
+		573212252BA19F7A006100CF /* FHLCommon.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 573212232BA19F7A006100CF /* FHLCommon.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		57BA20432B664A9900E5638D /* open_han31.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 57BA20422B664A9900E5638D /* open_han31.ttf */; };
 		57BA22D42B8614A500E5638D /* FMDB in Frameworks */ = {isa = PBXBuildFile; productRef = 57BA22D32B8614A500E5638D /* FMDB */; };
 		57D1360D2B4A642000FBDA4D /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57D1360C2B4A642000FBDA4D /* AppDelegate.swift */; };
@@ -38,11 +41,28 @@
 		};
 /* End PBXContainerItemProxy section */
 
+/* Begin PBXCopyFilesBuildPhase section */
+		573212262BA19F7B006100CF /* Embed Frameworks */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+				573212252BA19F7A006100CF /* FHLCommon.framework in Embed Frameworks */,
+			);
+			name = "Embed Frameworks";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
 /* Begin PBXFileReference section */
+		5732121A2BA197D2006100CF /* zh-Hant */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = "zh-Hant"; path = "zh-Hant.lproj/Main.storyboard"; sourceTree = "<group>"; };
+		5732121B2BA197D2006100CF /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = "zh-Hans"; path = "zh-Hans.lproj/Main.storyboard"; sourceTree = "<group>"; };
+		5732121F2BA1989B006100CF /* zh-Hant */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hant"; path = "zh-Hant.lproj/InfoPlist.strings"; sourceTree = "<group>"; };
+		573212212BA198A0006100CF /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/InfoPlist.strings"; sourceTree = "<group>"; };
+		573212232BA19F7A006100CF /* FHLCommon.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = FHLCommon.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		57BA20422B664A9900E5638D /* open_han31.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = open_han31.ttf; sourceTree = "<group>"; };
-		57BA22832B7DA01B00E5638D /* zh-Hant */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hant"; path = "zh-Hant.lproj/Main.strings"; sourceTree = "<group>"; };
 		57BA22842B7DA01B00E5638D /* zh-Hant */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hant"; path = "zh-Hant.lproj/LaunchScreen.strings"; sourceTree = "<group>"; };
-		57BA22852B7DA02300E5638D /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/Main.strings"; sourceTree = "<group>"; };
 		57BA22862B7DA02300E5638D /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/LaunchScreen.strings"; sourceTree = "<group>"; };
 		57D136092B4A642000FBDA4D /* FHLBibleTW.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FHLBibleTW.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		57D1360C2B4A642000FBDA4D /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -65,6 +85,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				573212242BA19F7A006100CF /* FHLCommon.framework in Frameworks */,
 				57BA22D42B8614A500E5638D /* FMDB in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -86,6 +107,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		573212222BA19F7A006100CF /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				573212232BA19F7A006100CF /* FHLCommon.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 		57D136002B4A642000FBDA4D = {
 			isa = PBXGroup;
 			children = (
@@ -93,6 +122,7 @@
 				57D136252B4A642100FBDA4D /* FHLBibleTWTests */,
 				57D1362F2B4A642100FBDA4D /* FHLBibleTWUITests */,
 				57D1360A2B4A642000FBDA4D /* Products */,
+				573212222BA19F7A006100CF /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -118,6 +148,7 @@
 				57D1361A2B4A642100FBDA4D /* LaunchScreen.storyboard */,
 				57D1361D2B4A642100FBDA4D /* Info.plist */,
 				57D136152B4A642000FBDA4D /* FHLBibleTW.xcdatamodeld */,
+				573212202BA1989B006100CF /* InfoPlist.strings */,
 			);
 			path = FHLBibleTW;
 			sourceTree = "<group>";
@@ -157,6 +188,7 @@
 				57D136052B4A642000FBDA4D /* Sources */,
 				57D136062B4A642000FBDA4D /* Frameworks */,
 				57D136072B4A642000FBDA4D /* Resources */,
+				573212262BA19F7B006100CF /* Embed Frameworks */,
 			);
 			buildRules = (
 			);
@@ -231,7 +263,7 @@
 			};
 			buildConfigurationList = 57D136042B4A642000FBDA4D /* Build configuration list for PBXProject "FHLBibleTW" */;
 			compatibilityVersion = "Xcode 14.0";
-			developmentRegion = en;
+			developmentRegion = "zh-Hant";
 			hasScannedForEncodings = 0;
 			knownRegions = (
 				en,
@@ -263,6 +295,7 @@
 				57D136192B4A642100FBDA4D /* Assets.xcassets in Resources */,
 				57BA20432B664A9900E5638D /* open_han31.ttf in Resources */,
 				57D136142B4A642000FBDA4D /* Main.storyboard in Resources */,
+				5732121E2BA1989B006100CF /* InfoPlist.strings in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -327,12 +360,21 @@
 /* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
+		573212202BA1989B006100CF /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				5732121F2BA1989B006100CF /* zh-Hant */,
+				573212212BA198A0006100CF /* zh-Hans */,
+			);
+			name = InfoPlist.strings;
+			sourceTree = "<group>";
+		};
 		57D136122B4A642000FBDA4D /* Main.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
 				57D136132B4A642000FBDA4D /* Base */,
-				57BA22832B7DA01B00E5638D /* zh-Hant */,
-				57BA22852B7DA02300E5638D /* zh-Hans */,
+				5732121A2BA197D2006100CF /* zh-Hant */,
+				5732121B2BA197D2006100CF /* zh-Hans */,
 			);
 			name = Main.storyboard;
 			sourceTree = "<group>";
@@ -476,6 +518,7 @@
 				DEVELOPMENT_TEAM = SF45W7PV99;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = FHLBibleTW/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = "台語聖經";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;
@@ -502,9 +545,10 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = SF45W7PV99;
+				DEVELOPMENT_TEAM = VYVKTHK4E5;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = FHLBibleTW/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = "台語聖經";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;

@@ -135,11 +135,11 @@ public class VCRead: UITableViewController {
         _swipeHelper.addSwipe(dir: .right)
         _swipeHelper.onSwipe$.afterChange += { [weak self] (_, new) in
             guard let self = self else { return }
-            if new.direction == .left {
+            if new.direction == .right {
                 let addrs = FHLCommon.VerseRangeGoNextChap().goPrev(self._addrsCur)
                 self._addrsCur = addrs
                 self._addrsCurChanged$.value += 1
-            } else if new.direction == .right {
+            } else if new.direction == .left {
                 let addrs = FHLCommon.VerseRangeGoNextChap().goNext(self._addrsCur)
                 self._addrsCur = addrs
                 self._addrsCurChanged$.value += 1
@@ -185,7 +185,7 @@ public class VCRead: UITableViewController {
             DispatchQueue.global().async {
                 // 預備參數
                 let r1 = self._addrsCur
-                let r2 = get_booknames_via_tp(tp: ManagerLangSet.s.curTpBookNameLang )[r1[0].book - 1]
+                let r2 = get_booknames_via_tp(tp: .太 )[r1[0].book - 1] // 台語都是用 .太
                 let r3 = "\(r2)\(r1[0].chap)"
                 
                 let vers = self.versionsFromTp
