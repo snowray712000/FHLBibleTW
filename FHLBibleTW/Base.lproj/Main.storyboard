@@ -68,7 +68,7 @@
                     <navigationItem key="navigationItem" id="FsQ-KZ-s5x">
                         <nil key="title"/>
                         <view key="titleView" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Z6l-nk-HX1">
-                            <rect key="frame" x="55.5" y="0.0" width="142" height="44"/>
+                            <rect key="frame" x="16" y="0.0" width="117" height="44"/>
                             <subviews>
                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="w3r-8i-8lN">
                                     <rect key="frame" x="5" y="5" width="132" height="34"/>
@@ -88,7 +88,11 @@
                             </constraints>
                         </view>
                         <rightBarButtonItems>
-                            <barButtonItem title="Item" image="ellipsis" catalog="system" id="On1-8o-4pw" userLabel="Btn More"/>
+                            <barButtonItem title="Item" image="ellipsis" catalog="system" id="On1-8o-4pw" userLabel="Btn More">
+                                <connections>
+                                    <action selector="doClickMore2" destination="NIR-EB-XyM" id="J3e-Zq-7jR"/>
+                                </connections>
+                            </barButtonItem>
                             <barButtonItem title="Item" image="speaker.wave.3" catalog="system" id="el5-uK-7P0">
                                 <connections>
                                     <action selector="doPlayAudio" destination="NIR-EB-XyM" id="9mk-Nr-TQQ"/>

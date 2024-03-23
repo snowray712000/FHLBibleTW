@@ -8,6 +8,7 @@
 import Foundation
 import UIKit
 import FHLCommon
+import AVFoundation
 
 class ManagerAddress : NSObject {
     static var s: ManagerAddress = ManagerAddress()
@@ -123,13 +124,16 @@ public class VCRead: UITableViewController {
     @IBOutlet weak var btnTitle: UIButton!
     @IBOutlet weak var btnMore2: UIBarButtonItem!
     @IBOutlet weak var btnAudio: UIBarButtonItem!
-    
+    lazy var viewDisappearing =  EasyEventAppBackgroundForegroundSwitch()
     public override func viewDidLoad() {
         super.viewDidLoad()
         
+        viewDisappearing.evResignActive$.afterChange += { [weak self] (_ , _) in
+            print("resign")
+            self?.setPlayerNil()
+        }
         // 還沒開發，發版本前，先隱藏起來
-        btnMore2.setValue(true, forKey: "hidden")
-        btnAudio.setValue(true, forKey: "hidden")
+//        btnMore2.setValue(true, forKey: "hidden")
         
         _swipeHelper.addSwipe(dir: .left)
         _swipeHelper.addSwipe(dir: .right)
@@ -147,7 +151,6 @@ public class VCRead: UITableViewController {
         }
         data$.afterChange += { [weak self] (_, new) in
             guard let self = self else { return }
-            
             // update tpAddresses
             var r1:[DAddress] = self._addrsCur
             for a1 in sinq( new ).select({$0.0}){
@@ -163,7 +166,9 @@ public class VCRead: UITableViewController {
             guard let self = self else { return }
             ManagerAddress.s.update(self._addrsCur)
         }
-        
+        _addrsCurChanged$.afterChange += { [weak self] (_, new) in
+            self?.setPlayerNil()
+        }        
         // 負責 因 addr 改變，設定 title
         _addrsCurChanged$.afterChange += { [weak self] (_, new) in
             guard let self = self else { return }
@@ -295,8 +300,124 @@ public class VCRead: UITableViewController {
         }
         navigationController?.pushViewController(r1, animated: false)
     }
+    
+    var avPlayer: AVPlayer?
+    var playerItemContext = 1
+    var playerItemDidPlayToEndTimeObserver: Any?
     @IBAction func doPlayAudio(){
+        if avPlayer == nil {
+            print("doPlayAudio")
+            
+            let addr = _addrsCur[0]
+            let chapString = String(format: "%03d", addr.chap)
+            let mp3_urla = "https://media.fhl.net/tte/\(addr.book)/\(addr.book)_\(chapString).mp3"
+            guard let mp3_url = URL(string: mp3_urla) else {
+                print("error mp3 url \(mp3_urla)")
+                return
+            }
+            
+            self.setPlayer(url: mp3_url)
+        } else {
+            assert( self.avPlayer != nil && self.avPlayer!.currentItem != nil )
+            self.setPlayerNil()// player.rate = 1.0 // readyToPlay 事件時播放
+        }
+    }
+    
+    func setPlayer(url: URL){
+        let item_player = AVPlayerItem(url: url)
+        addObserver_avplayitem_status(palyerItem: item_player)
+        addObserver_avplayitem_completed(playerItem: item_player)
+        
+        let player = AVPlayer(playerItem: item_player)
+        
+        // player.rate = 1.0 // readyToPlay 事件時播放
+        self.avPlayer = player
+        
+    }
+    func setPlayerNil(){
+        if let player = self.avPlayer,
+           let item = player.currentItem{
+            removeObserver_avplayitem_status(palyerItem: item)
+            removeObserver_avplayitem_completed(playerItem: item)
+            player.rate = 0
+            self.avPlayer = nil
+        }
+    }
+    func addObserver_avplayitem_completed(playerItem: AVPlayerItem){
+        assert ( playerItemDidPlayToEndTimeObserver == nil )
+        // 沒有把 回傳值 存起來 也會成功加入，但回傳值存起來，在 remove 時相對方便
+        playerItemDidPlayToEndTimeObserver =
+        NotificationCenter.default.addObserver(forName: .AVPlayerItemDidPlayToEndTime, object: playerItem, queue: .main) { [weak self] notification in
+            self?.setPlayerNil()
+        }
+    }
+    func removeObserver_avplayitem_completed(playerItem: AVPlayerItem){
+        assert( playerItemDidPlayToEndTimeObserver != nil )
+        NotificationCenter.default.removeObserver(playerItemDidPlayToEndTimeObserver!)
+        playerItemDidPlayToEndTimeObserver = nil
+    }
+    func addObserver_avplayitem_status(palyerItem: AVPlayerItem){
+        palyerItem.addObserver(self, forKeyPath: #keyPath(AVPlayerItem.status), options: [.new, .old], context: &playerItemContext)
+    }
+    func removeObserver_avplayitem_status(palyerItem: AVPlayerItem){
+        palyerItem.removeObserver(self, forKeyPath: #keyPath(AVPlayerItem.status), context: &playerItemContext)
+    }
+    func observeValue_playitem(forKeyPath keyPath: String?, of object: Any?, change: [NSKeyValueChangeKey : Any]?, context: UnsafeMutableRawPointer?){
+        // 通常，一開始會是 0，變成 1
+        // 發生在 初始一個 AVPlayer(item) 時會觸發，而不是 .rate = 1 才觸發
+        
+        assert( keyPath == "status" )
+        if let change = change,
+           let newValue = change[.newKey] as? Int,
+           let oldValue = change[.oldKey] as? Int{
+            
+            let newStatus = AVPlayerItem.Status(rawValue: newValue)
+            let oldStatus = AVPlayerItem.Status(rawValue: oldValue)
+//            print("status: \(status), st2: \(st2)")}
+            
+            switch newStatus {
+            case .readyToPlay: // 1
+                print("readyToPlay")
+                if let player = self.avPlayer,
+                   let item = player.currentItem {
+                    player.rate = 1.0
+//                    print( item.duration ) // CMTime(value: 14626944, timescale: 44100, flags: __C.CMTimeFlags(rawValue: 1), epoch: 0)
+//                    print( item.currentTime() ) // CMTime(value: 0, timescale: 1, flags: __C.CMTimeFlags(rawValue: 1), epoch: 0)
+//                    let time2 = CMTime(seconds: item.duration.seconds - 1, preferredTimescale: item.duration.timescale)
+//                    player.seek(to: time2, toleranceBefore: .zero, toleranceAfter: .zero)
+                    // 到結束前一秒
+                    //                let time = CMTime(seconds: 0, preferredTimescale: CMTimeScale(NSEC_PER_SEC))
+                    //                self.avPlayer!.seek(to: time, toleranceBefore: .zero, toleranceAfter: .zero)
+                }
+                
+                
+                break
+            case .unknown: // 0
+                print("unknown")
+                break
+            case .failed:// 2
+                print("failed")
+                break
+            default:
+                print("default")
+                break
+            }
+        }
+    }
+    override public func observeValue(forKeyPath keyPath: String?, of object: Any?, change: [NSKeyValueChangeKey : Any]?, context: UnsafeMutableRawPointer?) {
+        if context == &playerItemContext {
+            observeValue_playitem(forKeyPath: keyPath, of: object, change: change, context: context)
+        }
+    }    
+    
+    @IBAction func doClickMore2(){
+        print("doMore")
         print("doPlayAudio")
+        guard let mp3_url = URL(string: "https://media.fhl.net/tte/2/2_002.mp3") else { return }
+
+        let item_player = AVPlayerItem(url: mp3_url)
+        let player = AVPlayer(playerItem: item_player)
+        player.rate = 1
     }
     @IBAction func doSwitchVersions(){
         self.tpVersion += 1
@@ -335,4 +456,29 @@ class SwipeHelp {
         onSwipe$ <- sender
      }
     private var _gestures: [UISwipeGestureRecognizer] = []
+}
+class EasyEventAppBackgroundForegroundSwitch {
+    /// 程式從主畫面切回來時，會觸發
+    /// .evBecomeActive$.afterChange += { [weak self] (_ , _) in }
+    var evBecomeActive$: Observable<Int> = Observable(0)
+    /// 程式縮到最小時會觸發
+    /// .evResignActive$.afterChange += { [weak self] (_ , _) in }
+    var evResignActive$: Observable<Int> = Observable(0)
+    init(){
+        NotificationCenter.default.addObserver(self, selector: #selector(handleResignActiveNotification), name: UIApplication.willResignActiveNotification, object: nil)
+        
+        NotificationCenter.default.addObserver(self, selector: #selector(handleBecomeActiveNotification), name: UIApplication.didBecomeActiveNotification, object: nil)
+    }
+    @objc func handleResignActiveNotification() {
+        evResignActive$.value += 1
+    }
+    @objc func handleBecomeActiveNotification() {
+        evBecomeActive$.value += 1
+    }
+    deinit{
+        evBecomeActive$.afterChange.removeAll()
+        evBecomeActive$.beforeChange.removeAll()
+        evResignActive$.afterChange.removeAll()
+        evResignActive$.beforeChange.removeAll()
+    }
 }

@@ -56,8 +56,8 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
-		5732121A2BA197D2006100CF /* zh-Hant */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = "zh-Hant"; path = "zh-Hant.lproj/Main.storyboard"; sourceTree = "<group>"; };
-		5732121B2BA197D2006100CF /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = "zh-Hans"; path = "zh-Hans.lproj/Main.storyboard"; sourceTree = "<group>"; };
+		571150A32BA98F1700CFDA1C /* zh-Hant */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hant"; path = "zh-Hant.lproj/Main.strings"; sourceTree = "<group>"; };
+		571150A42BA98F1E00CFDA1C /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/Main.strings"; sourceTree = "<group>"; };
 		5732121F2BA1989B006100CF /* zh-Hant */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hant"; path = "zh-Hant.lproj/InfoPlist.strings"; sourceTree = "<group>"; };
 		573212212BA198A0006100CF /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/InfoPlist.strings"; sourceTree = "<group>"; };
 		573212232BA19F7A006100CF /* FHLCommon.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = FHLCommon.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -373,8 +373,8 @@
 			isa = PBXVariantGroup;
 			children = (
 				57D136132B4A642000FBDA4D /* Base */,
-				5732121A2BA197D2006100CF /* zh-Hant */,
-				5732121B2BA197D2006100CF /* zh-Hans */,
+				571150A32BA98F1700CFDA1C /* zh-Hant */,
+				571150A42BA98F1E00CFDA1C /* zh-Hans */,
 			);
 			name = Main.storyboard;
 			sourceTree = "<group>";
