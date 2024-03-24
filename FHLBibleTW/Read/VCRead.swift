@@ -133,17 +133,21 @@ public class VCRead: UITableViewController {
             self?.setPlayerNil()
         }
         // 還沒開發，發版本前，先隱藏起來
-//        btnMore2.setValue(true, forKey: "hidden")
+        btnMore2.setValue(true, forKey: "hidden")
         
         _swipeHelper.addSwipe(dir: .left)
         _swipeHelper.addSwipe(dir: .right)
         _swipeHelper.onSwipe$.afterChange += { [weak self] (_, new) in
             guard let self = self else { return }
             if new.direction == .right {
+                self.setPlayerNil()
+                
                 let addrs = FHLCommon.VerseRangeGoNextChap().goPrev(self._addrsCur)
                 self._addrsCur = addrs
                 self._addrsCurChanged$.value += 1
             } else if new.direction == .left {
+                self.setPlayerNil()
+                
                 let addrs = FHLCommon.VerseRangeGoNextChap().goNext(self._addrsCur)
                 self._addrsCur = addrs
                 self._addrsCurChanged$.value += 1
@@ -166,9 +170,6 @@ public class VCRead: UITableViewController {
             guard let self = self else { return }
             ManagerAddress.s.update(self._addrsCur)
         }
-        _addrsCurChanged$.afterChange += { [weak self] (_, new) in
-            self?.setPlayerNil()
-        }        
         // 負責 因 addr 改變，設定 title
         _addrsCurChanged$.afterChange += { [weak self] (_, new) in
             guard let self = self else { return }
@@ -295,6 +296,8 @@ public class VCRead: UITableViewController {
             guard let self = self else { return }
             guard let data = pData else { return }
             
+            self.setPlayerNil()
+            
             self._addrsCur = DAddress(data.idBook, data.idChap, 1).generateEntireThisChap()
             self._addrsCurChanged$ <- (self._addrsCurChanged$.value + 1)
         }
@@ -372,8 +375,6 @@ public class VCRead: UITableViewController {
            let oldValue = change[.oldKey] as? Int{
             
             let newStatus = AVPlayerItem.Status(rawValue: newValue)
-            let oldStatus = AVPlayerItem.Status(rawValue: oldValue)
-//            print("status: \(status), st2: \(st2)")}
             
             switch newStatus {
             case .readyToPlay: // 1
@@ -381,22 +382,20 @@ public class VCRead: UITableViewController {
                 if let player = self.avPlayer,
                    let item = player.currentItem {
                     player.rate = 1.0
-//                    print( item.duration ) // CMTime(value: 14626944, timescale: 44100, flags: __C.CMTimeFlags(rawValue: 1), epoch: 0)
-//                    print( item.currentTime() ) // CMTime(value: 0, timescale: 1, flags: __C.CMTimeFlags(rawValue: 1), epoch: 0)
-//                    let time2 = CMTime(seconds: item.duration.seconds - 1, preferredTimescale: item.duration.timescale)
-//                    player.seek(to: time2, toleranceBefore: .zero, toleranceAfter: .zero)
-                    // 到結束前一秒
-                    //                let time = CMTime(seconds: 0, preferredTimescale: CMTimeScale(NSEC_PER_SEC))
-                    //                self.avPlayer!.seek(to: time, toleranceBefore: .zero, toleranceAfter: .zero)
                 }
-                
-                
                 break
             case .unknown: // 0
                 print("unknown")
                 break
             case .failed:// 2
-                print("failed")
+                // message box , 此章節尚無錄音
+                let alertController = UIAlertController(title: "訊息", message: "此章節尚無錄音", preferredStyle: .alert)
+                let okAction = UIAlertAction(title: "確定", style: .default) { (action) in
+                    // 點擊確定按鈕後的動作
+                }
+                alertController.addAction(okAction)
+                self.present(alertController, animated: true, completion: nil)                                
+                self.setPlayerNil()
                 break
             default:
                 print("default")
@@ -408,7 +407,61 @@ public class VCRead: UITableViewController {
         if context == &playerItemContext {
             observeValue_playitem(forKeyPath: keyPath, of: object, change: change, context: context)
         }
-    }    
+    }
+    func seekTo(ratio: Float){
+        guard let player = self.avPlayer,
+              let item = player.currentItem else {
+            return
+        }
+        if item.duration.value == 0 {
+            return // not ready
+        }
+        
+        let v = ratio * Float( item.duration.value )
+        let time = CMTime(value: Int64( v ), timescale: item.duration.timescale )
+        player.seek(to: time, toleranceBefore: .zero, toleranceAfter: .zero)
+    }
+    func getDTextWLength(dtext: DText)-> Int {
+        let cnt = dtext.w != nil ? dtext.w!.count : 0
+        if dtext.children != nil {
+            return  cnt + sinq(dtext.children!).select({self.getDTextWLength(dtext: $0)}).reduce({ $0 + $1 })
+        }
+        return cnt
+    }
+    public override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        
+        // 兩個譯本
+        if self.tpVersion == 2 {
+            if indexPath.row < 2 {
+                self.seekTo(ratio: 0)
+            } else {
+                let row2 = indexPath.row / 2 // 無條件捨去
+                
+                let r1 = self.data$.value
+                let dtextsAll = sinq(r1).select({$0.1}).toArray() // [[DText]]
+                let dtextsHans = sinq(dtextsAll.enumerated()).whereTrue({$0.offset % 2 == 0}).select({$0.element}).toArray()
+                let dtextsPrev = sinq(dtextsHans).take(row2).toArray()
+                
+                let cntAll = sinq(dtextsHans).select({sinq($0).select({self.getDTextWLength(dtext: $0)}).reduce({$0+$1})}).reduce({$0+$1})
+                let cntNotAll = sinq(dtextsPrev).select({sinq($0).select({self.getDTextWLength(dtext: $0)}).reduce({$0+$1})}).reduce({$0+$1})
+                
+                self.seekTo(ratio: Float( cntNotAll ) / Float( cntAll) )
+            }
+        } else {
+            if indexPath.row == 0 {
+                self.seekTo(ratio: 0)
+            } else {
+                let dtextsAll = sinq( self.data$.value ).select({$0.1}).toArray()
+                assert ( indexPath.row > 0 )
+                let dtextsPrev = sinq(dtextsAll).take(indexPath.row).toArray()
+                
+                let cntAll = sinq(dtextsAll).select({sinq($0).select({self.getDTextWLength(dtext: $0)}).reduce({$0+$1})}).reduce({$0+$1})
+                let cntNotAll = sinq(dtextsPrev).select({sinq($0).select({self.getDTextWLength(dtext: $0)}).reduce({$0+$1})}).reduce({$0+$1})
+                
+                self.seekTo(ratio: Float( cntNotAll ) / Float( cntAll) )
+            }
+        }
+    }
     
     @IBAction func doClickMore2(){
         print("doMore")
