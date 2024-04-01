@@ -283,9 +283,18 @@ public class VCRead: UITableViewController {
         let dtexts: [DText] = [DText("仝此個所在有閣講：「𪜶絕對𣍐當進入我所賜的安歇。」",isTitle1: true),DText("這是一般文字")]
         
         let a1 = data$.value[indexPath.row]
-        
+
         cell.labelText?.attributedText = DText_To_AttributedString(dtexts: a1.1, isSnVisible: false, isTCSupport: true)
         cell.labelVerse?.attributedText = to_string(addrs: a1.0, tp: self.tpAddresses)
+
+        // 交錯的顏色，當多個譯本時
+        if self.tpVersion != 2{
+            cell.backgroundColor = UIColor.white
+        } else {
+            let color = indexPath.row % 2 != 0 ? UIColor(red: 0.95, green: 0.95, blue: 0.97, alpha: 1) : UIColor.white
+            cell.backgroundColor = color
+        }
+        
         return cell
     }
     
@@ -336,6 +345,9 @@ public class VCRead: UITableViewController {
         // player.rate = 1.0 // readyToPlay 事件時播放
         self.avPlayer = player
         
+        // set button image become stop
+        self.btnAudio.image = UIImage(systemName: "stop.fill")
+        
     }
     func setPlayerNil(){
         if let player = self.avPlayer,
@@ -344,6 +356,9 @@ public class VCRead: UITableViewController {
             removeObserver_avplayitem_completed(playerItem: item)
             player.rate = 0
             self.avPlayer = nil
+
+            // set button image become play
+            self.btnAudio.image = UIImage(systemName: "speaker.wave.3.fill")
         }
     }
     func addObserver_avplayitem_completed(playerItem: AVPlayerItem){
