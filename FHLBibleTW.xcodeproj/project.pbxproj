@@ -61,6 +61,7 @@
 		5732121F2BA1989B006100CF /* zh-Hant */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hant"; path = "zh-Hant.lproj/InfoPlist.strings"; sourceTree = "<group>"; };
 		573212212BA198A0006100CF /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/InfoPlist.strings"; sourceTree = "<group>"; };
 		573212232BA19F7A006100CF /* FHLCommon.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = FHLCommon.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		575C7ED52BBB0D3600B0564E /* PrivacyInfo.xcprivacy */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = PrivacyInfo.xcprivacy; sourceTree = "<group>"; };
 		57BA20422B664A9900E5638D /* open_han31.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = open_han31.ttf; sourceTree = "<group>"; };
 		57BA22842B7DA01B00E5638D /* zh-Hant */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hant"; path = "zh-Hant.lproj/LaunchScreen.strings"; sourceTree = "<group>"; };
 		57BA22862B7DA02300E5638D /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/LaunchScreen.strings"; sourceTree = "<group>"; };
@@ -149,6 +150,7 @@
 				57D1361D2B4A642100FBDA4D /* Info.plist */,
 				57D136152B4A642000FBDA4D /* FHLBibleTW.xcdatamodeld */,
 				573212202BA1989B006100CF /* InfoPlist.strings */,
+				575C7ED52BBB0D3600B0564E /* PrivacyInfo.xcprivacy */,
 			);
 			path = FHLBibleTW;
 			sourceTree = "<group>";
@@ -529,7 +531,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 2.0;
+				MARKETING_VERSION = 2.1;
 				PRODUCT_BUNDLE_IDENTIFIER = IJN.FHLBibleTW;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
@@ -560,7 +562,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 2.0;
+				MARKETING_VERSION = 2.1;
 				PRODUCT_BUNDLE_IDENTIFIER = IJN.FHLBibleTW;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
